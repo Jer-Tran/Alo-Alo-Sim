@@ -15,6 +15,8 @@ public class PlayerCam : MonoBehaviour
     public float zoomSpeed;
     public float maxZoom;
 
+    public float movementType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +53,9 @@ public class PlayerCam : MonoBehaviour
 
         }
         Vector3 direction = -1 * _cameraOffset.forward;
-        transform.position = _player.position + direction * _dist;
-        transform.LookAt(_player);
+        Vector3 newPos = _player.position + direction * _dist;
+        if (newPos.y > 0.1) { transform.position = _player.position + direction * _dist; } // Adjust later on, so it zooms in if this happens
+        transform.LookAt(_player); // For future, to adjust the camera elevation, adjust the offset up/down
 
 
     }

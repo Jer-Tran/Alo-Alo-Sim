@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,5 +19,10 @@ public class Player : MonoBehaviour
     {
         Vector3 Movement = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
         transform.position += Movement * speed * Time.deltaTime;
+    }
+
+    public void GetHit()
+    {
+        Debug.Log("player got hit");
     }
 }
