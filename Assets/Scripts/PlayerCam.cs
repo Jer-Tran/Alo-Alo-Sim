@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    //public Player _player;
     public Vector3 _direction;
     public Transform _player;
     public float _dist;
     public Transform _cameraOffset;
+    public float _playerSpeed;
 
     public float angleLock;
     public float turnSpeed;
@@ -33,15 +35,16 @@ public class PlayerCam : MonoBehaviour
         _dist = Mathf.Clamp(_dist, 1, maxZoom);
 
         float x = Input.GetAxis("Mouse X") * turnSpeed;
-        // If holding LMB, rotate character
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 rot = _player.rotation.eulerAngles;
-            rot.y += x;
-            _player.rotation = Quaternion.Euler(rot);
-        }
-        // If holding RMB, rotate camera
-        else if (Input.GetMouseButton(1))
+        //// If holding LMB, rotate character
+        //if (Input.GetMouseButton(0))
+        //{
+        //    Vector3 rot = _player.rotation.eulerAngles;
+        //    rot.y += x;
+        //    _player.rotation = Quaternion.Euler(rot);
+        //}
+        //// If holding RMB, rotate camera
+        //else 
+        if (Input.GetMouseButton(1))
         {
             Vector3 rot = _cameraOffset.rotation.eulerAngles;
             float y = Input.GetAxis("Mouse Y") * turnSpeed;
@@ -57,6 +60,10 @@ public class PlayerCam : MonoBehaviour
         if (newPos.y > 0.1) { transform.position = _player.position + direction * _dist; } // Adjust later on, so it zooms in if this happens
         transform.LookAt(_player); // For future, to adjust the camera elevation, adjust the offset up/down
 
+        //Vector3 Movement = _player.TransformDirection(new Vector3(0, 0, Input.GetAxis("Vertical")));
+        //_player.position += Movement * _playerSpeed * Time.deltaTime;
 
+        //float playerRot = Input.GetAxis("Horizontal") * turnSpeed;
+        //_player.Rotate(0, playerRot, 0);
     }
 }

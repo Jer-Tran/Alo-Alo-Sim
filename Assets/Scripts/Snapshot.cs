@@ -5,20 +5,18 @@ using UnityEngine;
 public class Snapshot : MonoBehaviour
 {
     public Player _player;
-    public bool _playerIn;
     public List<GameObject> _objects;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = (Player) FindFirstObjectByType(typeof(Player));
-        _playerIn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        DoSnapshot(); // For testing
+        //DoSnapshot(); // For testing
     }
 
     public void DoSnapshot()
